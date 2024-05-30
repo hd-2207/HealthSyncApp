@@ -8,7 +8,7 @@ import LastScanInfo from './LastScanInfo';
 import TemparatureComponent from './TemparatureComponent';
 
 const Dashboard = () => {
-  const [deviceId] = useState(8); // Example device ID
+  const [deviceId] = useState(1); // Example device ID
   const [updateTrigger, setUpdateTrigger] = useState(false);
   const [showDeviceInfo, setShowDeviceInfo] = useState(false);
   const [totalStatus, setTotalStatus] = useState('');
