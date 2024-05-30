@@ -1,6 +1,7 @@
 package com.projectone.devicehealth.service;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.projectone.devicehealth.entity.DeviceHealth;
 import com.projectone.devicehealth.exception.DeviceHealthServiceException;
 import com.projectone.devicehealth.repository.DeviceHealthRepository;
+
+import jakarta.annotation.PostConstruct;
 
 @Service
 public class DeviceHealthService {
@@ -61,7 +64,29 @@ public class DeviceHealthService {
             throw new DeviceHealthServiceException("Error deleting device health", e);
         }
     }
+    // New method to initialize mock data
+    
+    @PostConstruct
+    public void init() {
+        initializeMockData();
+    }
+    
+    public void initializeMockData() {
+        if (repository.count() == 0) {
+            DeviceHealth mockDevice1 = new DeviceHealth(36.5, 70.0, 50.0, 40.0, 20.0, LocalDateTime.now().minusDays(1), "Unhealthy");
+            DeviceHealth mockDevice2 = new DeviceHealth(35.0, 60.0, 80.0, 30.0, 15.0, LocalDateTime.now().minusDays(2), "Healthy");
+
+            repository.saveAll(Arrays.asList(mockDevice1, mockDevice2));
+        }
+    }
 }
+
+
+
+
+
+
+
 
 
 
