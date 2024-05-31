@@ -22,4 +22,9 @@ while the frontend provides an intuitive user interface for users to interact wi
 - Performs health checks on devices.
 - Updates the health status in the Device Health microservice.
 
+## Technology stack
+Backend: Java (Spring Boot)
+Frontend: React (`fetch` for API calls)
+Database: PostgreSQL
+API: RESTful APIs for communication between frontend and backend
   
